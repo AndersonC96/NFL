@@ -44,10 +44,10 @@
                 </div>
                 <?php } ?>
                 <img src="images/NFL_Logo.png" center style="width: 200px;">
-                <h1 class="h3 mb-3 font-weight-normal">Enter your registration</h1>
+                <h1 class="h3 mb-3 font-weight-normal">Insira seus dados de acesso</h1>
                 <label for="inputEmail" class="sr-only">E-mail</label>
                 <input name="email" type="email" id="inputEmail" class="form-control" placeholder="E-mail" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
+                <label for="inputPassword" class="sr-only">Senha</label>
                 <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
                 <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
