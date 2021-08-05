@@ -1,10 +1,6 @@
         <footer id="footer">
             <div class="container">
-                <div class="copyright">
-                    &copy; <a href="https://iportfolio.co.kr/">Copyright iPortfolio</a>
-                </div>
                 <div class="credits">
-                    <a href="https://bootstrapmade.com/">Designed by BootstrapMade</a>
                     <p><span class="text-muted"> Built by: Anderson Cavalcante</span></p>
                 </div>
             </div>
