@@ -53,3 +53,13 @@
     }
     fclose( $out );
 ?>
+<?php
+    $stmt = $con->prepare( 'SELECT * FROM sb' );
+    $stmt->execute();
+    $results = $stmt->fetchAll( PDO::FETCH_ASSOC );
+    $out = fopen( 'php://output', 'w' );
+    foreach( $results as $result ){
+        fputcsv( $out, $result );
+    }
+    fclose( $out );
+?>
