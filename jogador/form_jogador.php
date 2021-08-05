@@ -5,24 +5,24 @@
 <div class="container">
     <form class="" action="<?php echo $acao; ?>" method="post">
         <div class="from-group">
-            <label for="nome">Name</label>
+            <label for="nome">Nome</label>
             <input id="nome" class="form-control" type="text" name="nome"
                 value="<?php if(isset($registro)) echo $registro['nome']; ?>" required>
         </div>
         <div class="from-group">
-            <label for="data">Birth date</label>
+            <label for="data">Data de nascimento</label>
             <input id="data" class="form-control" type="date" name="data"
                 value="<?php if(isset($registro)) echo $registro['data']; ?>" maxlength="500" required>
         </div>
         <div class="from-group">
-            <label for="numero">Number</label>
+            <label for="numero">Número</label>
             <input id="numero" class="form-control" type="Number" name="numero"
                 value="<?php if(isset($registro)) echo $registro['numero']; ?>" required>
         </div>
         <div class="from-group">
-            <label for="id_posicao">Position</label>
+            <label for="id_posicao">Posição</label>
             <select class="form-control" name="id_posicao" required>
-                <option value="">Choose an item from the list</option>
+                <option value="">Escolha um item da lista</option>
                     <?php foreach ($lista_posicao as $item): ?>
                     <option value="<?php echo $item['id']; ?>"
                         <?php if(isset($registro) && $registro['id_posicao']==$item['id']) echo "selected";?>>
@@ -32,7 +32,7 @@
             </select>
         </div>
         <div class="from-group">
-            <label for="nome">Team</label>
+            <label for="nome">Time</label>
             <input id="nome" class="form-control" type="text" name="time"
                 value="<?php if(isset($registro)) echo $registro['time']; ?>" required>
         </div>
@@ -52,6 +52,6 @@
             <label class="form-check-label" for="calouro">Rookie</label>
         </div>
         <br>
-        <button class="btn btn-info" type="submit">Send</button>
+        <button class="btn btn-info" type="submit">Enviar</button>
     </form>
 </div>

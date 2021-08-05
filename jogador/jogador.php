@@ -34,7 +34,7 @@
             header('Location: ./jogador.php');
         }else{
             print_r($registro);
-            echo "Error trying to insert record, message: " . print_r($query->errorInfo());
+            echo "Erro ao tentar inserir os dados, mensagem: " . print_r($query->errorInfo());
         }
     }else if($acao == "excluir"){
         $id    = $_GET['id'];
@@ -45,7 +45,7 @@
         if($result){
             header('Location: ./jogador.php');
         }else{
-            echo "Error trying to remove id record: " . $id;
+            echo "Erro ao tentar remover o registro de id: " . $id;
         }
     }else if($acao == "buscar"){
         $lista_posicao = getPosicoes();
@@ -76,7 +76,7 @@
         if($result){
             header('Location: ./jogador.php');
         }else{
-            echo "Error trying to update data" . print_r($query->errorInfo());
+            echo "Erro ao tentar atualizar os dados" . print_r($query->errorInfo());
         }
     }
     function getPosicoes(){
