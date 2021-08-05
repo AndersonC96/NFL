@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <title>Caution</title>
+        <title>Atenção</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -25,23 +25,23 @@
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <a href="<?= BASE_URL; ?>classe/classe.php"classe.php" class="nav-link">Class</a>
+                        <a href="<?= BASE_URL; ?>classe/classe.php"classe.php" class="nav-link">Classe</a>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <a href="<?= BASE_URL; ?>posicao/posicao.php"posicao.php" class="nav-link">Position</a>
+                        <a href="<?= BASE_URL; ?>posicao/posicao.php"posicao.php" class="nav-link">Posições</a>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <a href="<?= BASE_URL; ?>jogador/jogador.php"jogador.php" class="nav-link">Player</a>
+                        <a href="<?= BASE_URL; ?>jogador/jogador.php"jogador.php" class="nav-link">Jogadores</a>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <li><a href="<?= BASE_URL; ?>/injurie/injurie.php"injurie.php" class="nav-link">Injurie</a></li>
+                        <li><a href="<?= BASE_URL; ?>/injurie/injurie.php"injurie.php" class="nav-link">Lesões</a></li>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <li><a href="https://www.nfl.com/standings/league/2021/REG" class="nav-link">Standings</a></li>
+                        <li><a href="https://www.nfl.com/standings/league/2021/REG" class="nav-link">Classificação</a></li>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
@@ -49,7 +49,7 @@
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <li><a href="<?= BASE_URL; ?>/relatorio/relatorio_page.php"relatorio_page.php" class="nav-link">Reports</a>
+                        <li><a href="<?= BASE_URL; ?>/relatorio/relatorio_page.php"relatorio_page.php" class="nav-link">Relatórios</a>
                     </li>
                 </ul>
             </nav>
