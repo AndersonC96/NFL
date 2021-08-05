@@ -5,14 +5,14 @@
 <div class="container">
     <form class="" action="<?php echo $acao; ?>" method="post">
         <div class="from-group">
-            <label for="nome">Register the Position that the player acts.</label>
+            <label for="nome">Posição</label>
             <input id="nome" class="form-control" type="text" name="nome"
                 value="<?php if(isset($registro)) echo $registro['nome']; ?>" required>
         </div>
         <div class="from-group">
-            <label for="id_classe">Register the player's class.</label>
+            <label for="id_classe">Classe</label>
             <select class="form-control" name="id_classe" required>
-                <option value="">Choose an item from the list</option>
+                <option value="">Escolha um item da lista</option>
                 <?php foreach ($lista_classe as $item): ?>
                 <option value="<?php echo $item['id']; ?>"
                     <?php if(isset($registro) && $registro['id_classe']==$item['id']) echo "selected";?>>
@@ -22,6 +22,6 @@
             </select>
         </div>
         <br>
-        <button class="btn btn-info" type="submit">Send</button>
+        <button class="btn btn-info" type="submit">Enviar</button>
     </form>
 </div>

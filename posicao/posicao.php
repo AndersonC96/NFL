@@ -30,7 +30,7 @@
         if($result){
             header('Location: ./posicao.php');
         }else{
-            echo "Error trying to insert record, message:". print_r($query->errorInfo());
+            echo "Erro ao tentar inserir o registro, mensagem:". print_r($query->errorInfo());
         }
     }else if($acao == "excluir"){
         $id    = $_GET['id'];
