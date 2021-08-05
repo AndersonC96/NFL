@@ -27,7 +27,7 @@
         if($result){
             header('Location: ./classe.php');
         }else{
-            echo "Error trying to insert record";
+            echo "Erro ao tentar inserir o registro";
         }
     }else if($acao == "excluir"){
         $id    = $_GET['id'];
@@ -38,7 +38,7 @@
         if($result){
             header('Location: ./classe.php');
         }else{
-            echo "Error trying to remove id record: " . $id;
+            echo "Erro ao tentar remover o registro de id: " . $id;
         }
     }else if($acao == "buscar"){
         $id    = $_GET['id'];
@@ -59,7 +59,7 @@
         if($result){
             header('Location: ./classe.php');
         }else{
-            echo "Error trying to update data";
+            echo "Erro ao tentar atualizar os dados";
         }
     }
 ?>

@@ -5,11 +5,11 @@
 <div class="container">
     <form class="" action="<?php echo $acao; ?>" method="post">
         <div class="from-group">
-            <label for="nome">Register the player's class: Attack, Defense or Special Team.</label>
+            <label for="nome">Registre a classe do jogador: Ataque, Defesa ou time de especialistas.</label>
             <input id="nome" class="form-control" type="text" name="nome"
                 value="<?php if(isset($registro)) echo $registro['nome']; ?>" required>
         </div>
         <br>
-        <button class="btn btn-info" type="submit">Send</button>
+        <button class="btn btn-info" type="submit">Enviar</button>
     </form>
 </div>
