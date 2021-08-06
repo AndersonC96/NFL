@@ -1,7 +1,7 @@
 <div class="container print">
     <h2>Times</h2>
     <p>Registre todos os times da NFL</p>
-    <a class="btn btn-info" href="sb.php?acao=novo">Novo</a>
+    <a class="btn btn-info" href="times.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados</p>
     <?php else: ?>
@@ -35,8 +35,8 @@
                 <td><?php echo $linha['nc']; ?></td>
                 <td><?php echo $linha['sb']; ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="sb.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="sb.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="times.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="times.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>
