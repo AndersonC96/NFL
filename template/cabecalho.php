@@ -45,7 +45,11 @@
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
-                        <li><a href="<?= BASE_URL; ?>/sb/sb.php"injurie.php" class="nav-link">Super Bowl</a></li>
+                        <li><a href="<?= BASE_URL; ?>/times/times.php"times.php" class="nav-link">Times</a></li>
+                    </li>
+                    <li class="nav-item active">
+                        <button class="btn btn-dark">
+                        <li><a href="<?= BASE_URL; ?>/sb/sb.php"sb.php" class="nav-link">Super Bowl</a></li>
                     </li>
                     <li class="nav-item active">
                         <button class="btn btn-dark">
