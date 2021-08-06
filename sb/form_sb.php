@@ -5,7 +5,7 @@
 <div class="container">
     <form class="" action="<?php echo $acao; ?>" method="post">
         <div class="from-group">
-            <label for="nome">Nome</label>
+            <label for="nome">Super Bowl</label>
             <input id="nome" class="form-control" type="text" name="nome"
                 value="<?php if(isset($registro)) echo $registro['nome']; ?>" required>
         </div>
@@ -18,6 +18,21 @@
             <label for="nome">Campeão</label>
             <input id="nome" class="form-control" type="text" name="campeao"
                 value="<?php if(isset($registro)) echo $registro['campeao']; ?>" required>
+        </div>
+        <div class="from-group">
+            <label for="nome">Placar</label>
+            <input id="nome" class="form-control" type="text" name="placar"
+                value="<?php if(isset($registro)) echo $registro['placar']; ?>" required>
+        </div>
+        <div class="from-group">
+            <label for="nome">Vice-Campeão</label>
+            <input id="nome" class="form-control" type="text" name="vice-campeao"
+                value="<?php if(isset($registro)) echo $registro['vice-campeao']; ?>" required>
+        </div>
+        <div class="from-group">
+            <label for="nome">MVP</label>
+            <input id="nome" class="form-control" type="text" name="mvp"
+                value="<?php if(isset($registro)) echo $registro['mvp']; ?>" required>
         </div>
         <div class="from-group">
             <label for="nome">Estádio</label>
@@ -33,6 +48,11 @@
             <label for="nome">Público</label>
             <input id="nome" class="form-control" type="text" name="publico"
                 value="<?php if(isset($registro)) echo $registro['publico']; ?>" required>
+        </div>
+        <div class="from-group">
+            <label for="nome">NetWork</label>
+            <input id="nome" class="form-control" type="text" name="network"
+                value="<?php if(isset($registro)) echo $registro['network']; ?>" required>
         </div>
         <div class="from-group">
             <label for="nome">Árbitro</label>

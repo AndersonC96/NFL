@@ -10,9 +10,13 @@
             <th>Nome</th>
             <th>Data</th>
             <th>Campeão</th>
+            <th>Placar</th>
+            <th>Vice-Campeão</th>
+            <th>MVP</th>
             <th>Estádio</th>
             <th>Cidade</th>
             <th>Público</th>
+            <th>Network</th>
             <th>Árbitro</th>
             <th>Ações</th>
         </thead>
@@ -22,9 +26,13 @@
                 <td><?= $linha['nome']; ?></td>
                 <td><?= $linha['data']; ?></td>
                 <td><?= $linha['campeao']; ?></td>
+                <td><?= $linha['placar']; ?></td>
+                <td><?= $linha['vice-campeao']; ?></td>
+                <td><?= $linha['mvp']; ?></td>
                 <td><?php echo $linha['estadio']; ?></td>
                 <td><?php echo $linha['cidade']; ?></td>
                 <td><?php echo $linha['publico']; ?></td>
+                <td><?php echo $linha['network']; ?></td>
                 <td><?php echo $linha['juiz']; ?></td>
                 <td>
                     <a class="btn btn-warning btn-sm" href="sb.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
