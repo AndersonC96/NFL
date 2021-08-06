@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Ago-2021 às 20:31
+-- Tempo de geração: 06-Ago-2021 às 21:54
 -- Versão do servidor: 10.4.20-MariaDB
 -- versão do PHP: 8.0.8
 
@@ -211,6 +211,65 @@ INSERT INTO `sb` (`id`, `nome`, `data`, `campeao`, `placar`, `vice-campeao`, `mv
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `time`
+--
+
+CREATE TABLE `time` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `conferencia` varchar(100) NOT NULL,
+  `divisao` varchar(100) NOT NULL,
+  `cidade` varchar(100) NOT NULL,
+  `estadio` varchar(100) NOT NULL,
+  `capacidade` varchar(100) NOT NULL,
+  `head-coach` varchar(100) NOT NULL,
+  `td` varchar(100) NOT NULL,
+  `tc` varchar(100) NOT NULL,
+  `nc` varchar(100) NOT NULL,
+  `sb` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `time`
+--
+
+INSERT INTO `time` (`id`, `nome`, `conferencia`, `divisao`, `cidade`, `estadio`, `capacidade`, `head-coach`, `td`, `tc`, `nc`, `sb`) VALUES
+(33, 'Buffalo Bills', 'AFC', 'AFC East', 'Orchard Park, New York', 'Highmark Stadium', '71,608', 'Sean McDermott', '8', '4', '2', '0'),
+(34, 'Miami Dolphins', 'AFC', 'AFC East', 'Miami Gardens, Florida', 'Hard Rock Stadium', '64,767', 'Brian Flores', '13', '5', '0', '2'),
+(35, 'New England Patriots', 'AFC', 'AFC East', 'Foxborough, Massachusetts', 'Gillette Stadium', '65,878', 'Bill Belichick', '22', '11', '0', '6'),
+(36, 'New York Jets', 'AFC', 'AFC East', 'East Rutherford, New Jersey', 'MetLife Stadium[C]', '82,500', 'Robert Saleh', '4', '0', '1', '1'),
+(37, 'Baltimore Ravens', 'AFC', 'AFC North', 'Baltimore, Maryland', 'M&T Bank Stadium', '71,008', 'John Harbaugh', '6', '2', '0', '2'),
+(38, 'Cincinnati Bengals', 'AFC', 'AFC North', 'Cincinnati, Ohio', 'Paul Brown Stadium', '65,515', 'Zac Taylor', '9', '2', '0', '0'),
+(39, 'Cleveland Browns', 'AFC', 'AFC North', 'Cleveland, Ohio', 'FirstEnergy Stadium', '67,895', 'Kevin Stefanski', '12', '11', '8', '0'),
+(40, 'Pittsburgh Steelers', 'AFC', 'AFC North', 'Pittsburgh, Pennsylvania', 'Heinz Field', '68,400', 'Mike Tomlin', '24', '8', '0', '6'),
+(41, 'Houston Texans', 'AFC', 'AFC South', 'Houston, Texas', 'NRG Stadium', '71,995', 'David Culley', '6', '0', '0', '0'),
+(42, 'Indianapolis Colts', 'AFC', 'AFC South', 'Indianapolis, Indiana', 'Lucas Oil Stadium', '67,000', 'Frank Reich', '16', '7', '3', '2'),
+(43, 'Jacksonville Jaguars', 'AFC', 'AFC South', 'Jacksonville, Florida', 'TIAA Bank Field[E]', '67,814', 'Urban Meyer', '3', '0', '0', '0'),
+(44, 'Tennessee Titans', 'AFC', 'AFC South', 'Nashville, Tennessee', 'Nissan Stadium', '69,143', 'Mike Vrabel', '10', '1', '2', '0'),
+(45, 'Denver Broncos', 'AFC', 'AFC West', 'Denver, Colorado', 'Empower Field at Mile High', '76,125', 'Vic Fangio', '15', '8', '0', '3'),
+(46, 'Kansas City Chiefs', 'AFC', 'AFC West', 'Kansas City, Missouri', 'Arrowhead Stadium', '76,416', 'Andy Reid', '13', '2', '3', '2'),
+(47, 'Las Vegas Raiders', 'AFC', 'AFC West', 'Paradise, Nevada', 'Allegiant Stadium', '65,000', 'Jon Gruden', '15', '4', '1', '3'),
+(48, 'Los Angeles Chargers', 'AFC', 'AFC West', 'Inglewood, California', 'SoFi Stadium[F]', '70,240', 'Brandon Staley', '15', '1', '1', '0'),
+(49, 'Dallas Cowboys', 'NFC', 'NFC East', 'Arlington, Texas', 'AT&T Stadium', '80,000', 'Mike McCarthy', '23', '10', '0', '5'),
+(50, 'New York Giants', 'NFC', 'NFC East', 'East Rutherford, New Jersey', 'MetLife Stadium[C]', '82,500', 'Joe Judge', '16', '11', '4', '4'),
+(51, 'Philadelphia Eagles', 'NFC', 'NFC East', 'Philadelphia, Pennsylvania', 'Lincoln Financial Field', '69,176', 'Nick Sirianni', '14', '4', '3', '1'),
+(52, 'Washington Football Team', 'NFC', 'NFC East', 'Landover, Maryland', 'FedExField', '82,000', 'Ron Rivera', '15', '5', '3', '2'),
+(53, 'Chicago Bears', 'NFC', 'NFC North', 'Chicago, Illinois', 'Soldier Field', '61,500', 'Matt Nagy', '19', '4', '8', '1'),
+(54, 'Detroit Lions', 'NFC', 'NFC North', 'Detroit, Michigan', 'Ford Field', '65,000', 'Dan Campbell', '4', '4', '4', '0'),
+(55, 'Green Bay Packers', 'NFC', 'NFC North', 'Green Bay, Wisconsin', 'Lambeau Field', '81,441', 'Matt LaFleur', '20', '9', '11', '4'),
+(56, 'Minnesota Vikings', 'NFC', 'NFC North', 'Minneapolis, Minnesota', 'U.S. Bank Stadium', '66,860', 'Mike Zimmer', '20', '4', '1', '0'),
+(57, 'Atlanta Falcons', 'NFC', 'NFC South', 'Atlanta, Georgia', 'Mercedes-Benz Stadium', '71,000', 'Arthur Smith', '6', '2', '0', '0'),
+(58, 'Carolina Panthers', 'NFC', 'NFC South', 'Charlotte, North Carolina', 'Bank of America Stadium', '75,523', 'Matt Rhule', '6', '2', '0', '0'),
+(59, 'New Orleans Saints', 'NFC', 'NFC South', 'New Orleans, Louisiana', 'Caesars Superdome', '73,208', 'Sean Payton', '9', '1', '0', '1'),
+(60, 'Tampa Bay Buccaneers', 'NFC', 'NFC South', 'Tampa, Florida', 'Raymond James Stadium', '65,618', 'Bruce Arians', '6', '2', '0', '2'),
+(61, 'Arizona Cardinals', 'NFC', 'NFC West', 'Glendale, Arizona', 'State Farm Stadium', '63,400', 'Kliff Kingsbury', '7', '1', '2', '0'),
+(62, 'Los Angeles Rams', 'NFC', 'NFC West', 'Inglewood, California', 'SoFi Stadium[F]', '70,240', 'Sean McVay', '17', '7', '2', '1'),
+(63, 'San Francisco 49ers', 'NFC', 'NFC West', 'Santa Clara, California', 'Levi\'s Stadium', '68,500', 'Kyle Shanahan', '20', '7', '0', '5'),
+(64, 'Seattle Seahawks', 'NFC', 'NFC West', 'Seattle, Washington', 'Lumen Field', '69,000', 'Pete Carroll', '11', '3', '0', '1');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `usuario`
 --
 
@@ -266,6 +325,12 @@ ALTER TABLE `sb`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Índices para tabela `time`
+--
+ALTER TABLE `time`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -304,6 +369,12 @@ ALTER TABLE `posicao`
 --
 ALTER TABLE `sb`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+
+--
+-- AUTO_INCREMENT de tabela `time`
+--
+ALTER TABLE `time`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
