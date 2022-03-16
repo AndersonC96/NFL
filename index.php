@@ -1,11 +1,15 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['logado'])){
-        header('Location: login.php');
+    session_start();// iniciar sessão
+    if(!isset($_SESSION['logado'])){// se não existir a sessão
+        header('Location: login.php');// redirecionar para a página de login
     }
 ?>
-<?php require_once 'template/cabecalho.php'; ?>
-<?php echo "Welcome: "  . $_SESSION['logado']['nome']; ?>
+<?php
+    require_once 'template/cabecalho.php';
+?>
+<?php
+    echo "Bem-vindo: "  . $_SESSION['logado']['nome'];// exibir o nome do usuário logado
+?>
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">NFL</h1>
@@ -15,4 +19,6 @@
         <p><a href="https://www.nfl.com/">Site Oficial da NFL</></p>
     </div>
 </section>
-<?php require_once 'template/rodape.php'; ?>
+<?php
+    require_once 'template/rodape.php';
+?>
