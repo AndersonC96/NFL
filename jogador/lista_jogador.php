@@ -21,7 +21,7 @@
             <?php foreach ($registros as $linha): ?>
             <tr>
                 <td><?= $linha['nome']; ?></td>
-                <td><?= $linha['data']; ?></td>
+                <td><?= date('d/m/Y', strtotime($linha['data'])); ?></td>
                 <td><?= $linha['numero']; ?></td>
                 <td><?php echo $linha['posicao']; ?></td>
                 <td><?php if($linha['calouro']==1) echo "Yes";
