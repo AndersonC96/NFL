@@ -1,9 +1,9 @@
 <div class="container print">
     <h2>Posições</h2>
     <p>Registre a posição do jogador. Exemplo: Quaterback, Safety, entre outros.</p>
-    <a class="btn btn-info" href="posicao.php?acao=novo">New</a>
+    <a class="btn btn-info" href="posicao.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
-    <p>No records found.</p>
+    <p>Sem registros encontrados.</p>
     <?php else: ?>
     <table class="table table-hover table-stripped">
         <thead>
