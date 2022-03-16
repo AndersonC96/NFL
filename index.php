@@ -8,7 +8,7 @@
     require_once 'template/cabecalho.php';
 ?>
 <?php
-    echo "Bem-vindo: "  . $_SESSION['logado']['nome'];// exibir o nome do usuário logado
+    echo "<b>Bem-vindo</b>: "  . $_SESSION['logado']['nome'];// exibir o nome do usuário logado
 ?>
 <section class="jumbotron text-center">
     <div class="container">
