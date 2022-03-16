@@ -1,6 +1,6 @@
 <?php
-    if(isset($registro)) $acao = "posicao.php?acao=atualizar&id=".$registro['id'];
-    else $acao = "posicao.php?acao=gravar";
+    if(isset($registro)) $acao = "posicao.php?acao=atualizar&id=".$registro['id'];// se existir o registro
+    else $acao = "posicao.php?acao=gravar";// se não existir o registro
 ?>
 <div class="container">
     <form class="" action="<?php echo $acao; ?>" method="post">
