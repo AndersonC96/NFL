@@ -1,23 +1,23 @@
 <?php
-    session_start();
-    if(isset($_GET['acao']) && $_GET['acao']=="sair"){
-        unset($_SESSION['logado']);
+    session_start();// iniciar sessão
+    if(isset($_GET['acao']) && $_GET['acao']=="sair"){// se existir a sessão
+        unset($_SESSION['logado']);// destruir a sessão
     }
     if(isset($_POST)){
-        require_once './config/conexao.php';
-        $sql   = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";
-        $query = $con->prepare($sql);
-        $query->bindParam('email', $_POST['email']);
-        if(isset($_POST['email']) && isset($_POST['senha'])){
-            $senha = md5($_POST['senha']);
-            $query->bindParam('senha', $senha);
-            $query->execute();
-            if($query->rowCount()==1){
-                $usuario = $query->fetch();
-                $_SESSION['logado'] = array("nome"=>$usuario['nome'], 'id'=>$usuario['id']);
-                header('Location: index.php');
-            }else{
-                $msg = "Username or password do not match";
+        require_once './config/conexao.php';// conexão com o banco de dados
+        $sql   = "SELECT * FROM usuario WHERE email = :email AND senha = :senha";// consulta ao banco de dados
+        $query = $con->prepare($sql);// preparar a consulta
+        $query->bindParam('email', $_POST['email']);// passar o parâmetro
+        if(isset($_POST['email']) && isset($_POST['senha'])){// se existir o email e a senha
+            $senha = md5($_POST['senha']);// criptografar a senha
+            $query->bindParam('senha', $senha);// passar o parâmetro
+            $query->execute();// executar a consulta
+            if($query->rowCount()==1){// se existir o usuário
+                $usuario = $query->fetch();// armazenar o usuário
+                $_SESSION['logado'] = array("nome"=>$usuario['nome'], 'id'=>$usuario['id']);// armazenar o usuário logado
+                header('Location: index.php');// redirecionar para a página inicial
+            }else{// se não existir o usuário
+                $msg = "Nome de usuário ou senha não coincidem";// mensagem de erro
             }
         }
     }
@@ -50,7 +50,7 @@
                 <label for="inputPassword" class="sr-only">Senha</label>
                 <input name="senha" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
+                <p class="mt-5 mb-3 text-muted">&copy; 2021-2022</p>
         </form>
     </body>
 </html>
