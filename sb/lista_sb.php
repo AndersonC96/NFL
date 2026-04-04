@@ -23,20 +23,20 @@
         <tbody>
             <?php foreach ($registros as $linha): ?>
             <tr>
-                <td><?= $linha['nome']; ?></td>
-                <td><?= $linha['data']; ?></td>
-                <td><?= $linha['campeao']; ?></td>
-                <td><?= $linha['placar']; ?></td>
-                <td><?= $linha['vice-campeao']; ?></td>
-                <td><?= $linha['mvp']; ?></td>
-                <td><?php echo $linha['estadio']; ?></td>
-                <td><?php echo $linha['cidade']; ?></td>
-                <td><?php echo $linha['publico']; ?></td>
-                <td><?php echo $linha['network']; ?></td>
-                <td><?php echo $linha['juiz']; ?></td>
+                <td><?= h((string) $linha['nome']); ?></td>
+                <td><?= h((string) $linha['data']); ?></td>
+                <td><?= h((string) $linha['campeao']); ?></td>
+                <td><?= h((string) $linha['placar']); ?></td>
+                <td><?= h((string) $linha['vice-campeao']); ?></td>
+                <td><?= h((string) $linha['mvp']); ?></td>
+                <td><?= h((string) $linha['estadio']); ?></td>
+                <td><?= h((string) $linha['cidade']); ?></td>
+                <td><?= h((string) $linha['publico']); ?></td>
+                <td><?= h((string) $linha['network']); ?></td>
+                <td><?= h((string) $linha['juiz']); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="sb.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="sb.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="sb.php?acao=buscar&id=<?= (int) $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="sb.php?acao=excluir&id=<?= (int) $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>

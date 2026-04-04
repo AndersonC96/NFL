@@ -1,0 +1,20 @@
+# Environment / local config
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Runtime / logs / cache
+*.log
+*.tmp
+*.cache
+/cache/
+/tmp/
+
+# Uploaded/generated files (if used locally)
+uploads/

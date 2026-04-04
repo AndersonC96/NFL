@@ -14,11 +14,11 @@
         <tbody>
             <?php foreach ($registros as $linha): ?>
             <tr>
-                <td><?php echo $linha['nome']; ?></td>
-                <td><?php echo $linha['classe']; ?></td>
+                <td><?= h((string) $linha['nome']); ?></td>
+                <td><?= h((string) $linha['classe']); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="posicao.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="posicao.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="posicao.php?acao=buscar&id=<?= (int) $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="posicao.php?acao=excluir&id=<?= (int) $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>

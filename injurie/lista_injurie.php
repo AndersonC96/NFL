@@ -14,12 +14,12 @@
         <tbody>
             <?php foreach ($registros as $linha): ?>
             <tr>
-                <td><?= $linha['nome']; ?></td>
-                <td><?= $linha['local_fratura']; ?></td>
-                <td><?= $linha['jogador']; ?></td>
+                <td><?= h((string) $linha['nome']); ?></td>
+                <td><?= h((string) $linha['local_fratura']); ?></td>
+                <td><?= h((string) $linha['jogador']); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="injurie.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="injurie.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="injurie.php?acao=buscar&id=<?= (int) $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="injurie.php?acao=excluir&id=<?= (int) $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>

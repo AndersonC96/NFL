@@ -13,10 +13,10 @@
         <tbody>
             <?php foreach ($registros as $linha): ?>
             <tr>
-                <td><?php echo $linha['nome']; ?></td>
+                <td><?= h((string) $linha['nome']); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="classe.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="classe.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="classe.php?acao=buscar&id=<?= (int) $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="classe.php?acao=excluir&id=<?= (int) $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>

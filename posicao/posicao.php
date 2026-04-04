@@ -1,74 +1,91 @@
 <?php
-    session_start();// iniciar sessão
-    if(!isset($_SESSION['logado'])){// se não existir a sessão
-        header('Location: login.php');// redirecionar para a página de login
+require_once __DIR__ . '/../config/bootstrap.php';
+require_once __DIR__ . '/../config/conexao.php';
+
+require_auth();
+
+$acao = get_action(['listar', 'novo', 'gravar', 'excluir', 'buscar', 'atualizar']);
+
+if ($acao === 'listar') {
+    $sql = 'SELECT p.id, p.nome, c.nome as classe FROM posicao p INNER JOIN classe c ON c.id = p.id_classe ORDER BY p.nome';
+    $query = $con->query($sql);
+    $registros = $query->fetchAll();
+    require_once __DIR__ . '/../template/cabecalho.php';
+    require_once __DIR__ . '/lista_posicao.php';
+    require_once __DIR__ . '/../template/rodape.php';
+} elseif ($acao === 'novo') {
+    $lista_classe = getClasses($con);
+    require_once __DIR__ . '/../template/cabecalho.php';
+    require_once __DIR__ . '/form_posicao.php';
+    require_once __DIR__ . '/../template/rodape.php';
+} elseif ($acao === 'gravar') {
+    $nome = trim((string) post_value('nome'));
+    $idClasse = filter_input(INPUT_POST, 'id_classe', FILTER_VALIDATE_INT);
+
+    if ($nome === '' || !$idClasse) {
+        set_flash('danger', 'Preencha os campos obrigatorios da posicao.');
+        redirect_to('posicao/posicao.php?acao=novo');
     }
-?>
-<?php
-    require_once '../config/conexao.php';// conexão com o banco de dados
-    if(!isset($_GET['acao'])) $acao="listar";// se não existir a ação
-    else $acao = $_GET['acao'];// armazenar a ação
-    if($acao=="listar"){// se a ação for listar
-        $sql   = "SELECT p.id, p.nome, c.nome as classe FROM posicao p INNER JOIN classe c ON c.id=p.id_classe";// consulta ao banco de dados
-        $query = $con->query($sql);// preparar a consulta
-        $registros = $query->fetchAll();// armazenar os registros
-        require_once '../template/cabecalho.php';// carregar o cabeçalho
-        require_once 'lista_posicao.php';// carregar a lista de posições
-        require_once '../template/rodape.php';// carregar o rodapé
-    }else if($acao == "novo"){// se a ação for novo
-        $lista_classe = getClasses();// lista de classes
-        require_once '../template/cabecalho.php';// carregar o cabeçalho
-        require_once 'form_posicao.php';// carregar o formulário de posição
-        require_once '../template/rodape.php';// carregar o rodapé
-    }else if($acao == "gravar"){// se a ação for gravar
-        $registro = $_POST;// armazenar os dados do formulário
-        $sql = "INSERT INTO posicao(nome, id_classe) VALUES(:nome, :id_classe)";// inserir no banco de dados
-        $query = $con->prepare($sql);// preparar a consulta
-        $result = $query->execute($registro);// executar a consulta
-        if($result){// se o resultado for verdadeiro
-            header('Location: ./posicao.php');// redirecionar para a página de posições
-        }else{// se o resultado for falso
-            echo "Erro ao tentar inserir o registro, mensagem:". print_r($query->errorInfo());// exibir a mensagem de erro
-        }
-    }else if($acao == "excluir"){// se a ação for excluir
-        $id    = $_GET['id'];// armazenar o id do registro
-        $sql   = "DELETE FROM posicao WHERE id = :id";// excluir do banco de dados
-        $query = $con->prepare($sql);// preparar a consulta
-        $query->bindParam(':id', $id);// vincular o id
-        $result = $query->execute();// executar a consulta
-        if($result){// se o resultado for verdadeiro
-            header('Location: ./posicao.php');// redirecionar para a página de posições
-        }else{// se o resultado for falso
-            echo "Erro ao tentar remover o registro de id: " . $id;// exibir a mensagem de erro
-        }
-    }else if($acao == "buscar"){// se a ação for buscar
-        $lista_classe = getClasses();// lista de classes
-        $id    = $_GET['id'];// armazenar o id do registro
-        $sql   = "SELECT * FROM posicao WHERE id = :id";// consulta ao banco de dados
-        $query = $con->prepare($sql);// preparar a consulta
-        $query->bindParam(':id', $id);// vincular o id
-        $query->execute();// executar a consulta
-        $registro = $query->fetch();// armazenar o registro
-        require_once '../template/cabecalho.php';// carregar o cabeçalho
-        require_once 'form_posicao.php';// carregar o formulário de posição
-        require_once '../template/rodape.php';// carregar o rodapé
-    }else if($acao == "atualizar"){// se a ação for atualizar
-        $sql   = "UPDATE posicao SET nome = :nome, id_classe = :id_classe WHERE id = :id";// atualizar no banco de dados
-        $query = $con->prepare($sql);// preparar a consulta
-        $query->bindParam(':id', $_GET['id']);// vincular o id
-        $query->bindParam(':nome', $_POST['nome']);// vincular o nome
-        $query->bindParam(':id_classe', $_POST['id_classe']);// vincular a classe
-        $result = $query->execute();// executar a consulta
-        if($result){// se o resultado for verdadeiro
-            header('Location: ./posicao.php');// redirecionar para a página de posições
-        }else{// se o resultado for falso
-            echo "Erro ao tentar atualizar os dados" . print_r($query->errorInfo());// exibir a mensagem de erro
-        }
+
+    $query = $con->prepare('INSERT INTO posicao(nome, id_classe) VALUES(:nome, :id_classe)');
+    $result = $query->execute([':nome' => $nome, ':id_classe' => (int) $idClasse]);
+
+    set_flash($result ? 'success' : 'danger', $result ? 'Posicao cadastrada com sucesso.' : 'Nao foi possivel cadastrar a posicao.');
+    redirect_to('posicao/posicao.php');
+} elseif ($acao === 'excluir') {
+    $id = get_id_param();
+
+    if ($id === null) {
+        set_flash('danger', 'Registro invalido para exclusao.');
+        redirect_to('posicao/posicao.php');
     }
-    function getClasses(){// função para listar as classes
-        $sql   = "SELECT * FROM classe";// consulta ao banco de dados
-        $query = $GLOBALS['con']->query($sql);// preparar a consulta
-        $lista_classe = $query->fetchAll();// armazenar os registros
-        return $lista_classe;// retornar a lista de classes
+
+    $query = $con->prepare('DELETE FROM posicao WHERE id = :id');
+    $result = $query->execute([':id' => $id]);
+
+    set_flash($result ? 'success' : 'danger', $result ? 'Posicao removida com sucesso.' : 'Nao foi possivel remover a posicao.');
+    redirect_to('posicao/posicao.php');
+} elseif ($acao === 'buscar') {
+    $id = get_id_param();
+    $lista_classe = getClasses($con);
+
+    if ($id === null) {
+        set_flash('danger', 'Registro invalido para edicao.');
+        redirect_to('posicao/posicao.php');
     }
+
+    $query = $con->prepare('SELECT * FROM posicao WHERE id = :id');
+    $query->execute([':id' => $id]);
+    $registro = $query->fetch();
+
+    if (!$registro) {
+        set_flash('danger', 'Posicao nao encontrada.');
+        redirect_to('posicao/posicao.php');
+    }
+
+    require_once __DIR__ . '/../template/cabecalho.php';
+    require_once __DIR__ . '/form_posicao.php';
+    require_once __DIR__ . '/../template/rodape.php';
+} elseif ($acao === 'atualizar') {
+    $id = get_id_param();
+    $nome = trim((string) post_value('nome'));
+    $idClasse = filter_input(INPUT_POST, 'id_classe', FILTER_VALIDATE_INT);
+
+    if ($id === null || $nome === '' || !$idClasse) {
+        set_flash('danger', 'Dados invalidos para atualizacao.');
+        redirect_to('posicao/posicao.php');
+    }
+
+    $query = $con->prepare('UPDATE posicao SET nome = :nome, id_classe = :id_classe WHERE id = :id');
+    $result = $query->execute([':id' => $id, ':nome' => $nome, ':id_classe' => (int) $idClasse]);
+
+    set_flash($result ? 'success' : 'danger', $result ? 'Posicao atualizada com sucesso.' : 'Nao foi possivel atualizar a posicao.');
+    redirect_to('posicao/posicao.php');
+}
+
+function getClasses(PDO $con): array
+{
+    $query = $con->query('SELECT * FROM classe ORDER BY nome');
+    return $query->fetchAll();
+}
 ?>

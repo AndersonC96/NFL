@@ -277,7 +277,7 @@ CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(32) NOT NULL
+  `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -285,7 +285,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`) VALUES
-(1, 'Roger Federer', 'roger.federer@uniqlo.com', '1c60d53118980636c7ed1fa85a78e3a5');
+(1, 'Roger Federer', 'roger.federer@uniqlo.com', '$2y$10$1ft07c7Rw4vexB9reEswsON.Uqlt7Xs1wIIHLIKHCw8EMqk2Moiau');
 
 --
 -- Índices para tabelas despejadas

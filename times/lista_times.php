@@ -23,20 +23,20 @@
         <tbody>
             <?php foreach ($registros as $linha): ?>
             <tr>
-                <td><?= $linha['nome']; ?></td>
-                <td><?= $linha['conferencia']; ?></td>
-                <td><?= $linha['divisao']; ?></td>
-                <td><?= $linha['cidade']; ?></td>
-                <td><?= $linha['estadio']; ?></td>
-                <td><?= $linha['capacidade']; ?></td>
-                <td><?php echo $linha['head-coach']; ?></td>
-                <td><?php echo $linha['td']; ?></td>
-                <td><?php echo $linha['tc']; ?></td>
-                <td><?php echo $linha['nc']; ?></td>
-                <td><?php echo $linha['sb']; ?></td>
+                <td><?= h((string) $linha['nome']); ?></td>
+                <td><?= h((string) $linha['conferencia']); ?></td>
+                <td><?= h((string) $linha['divisao']); ?></td>
+                <td><?= h((string) $linha['cidade']); ?></td>
+                <td><?= h((string) $linha['estadio']); ?></td>
+                <td><?= h((string) $linha['capacidade']); ?></td>
+                <td><?= h((string) $linha['head-coach']); ?></td>
+                <td><?= h((string) $linha['td']); ?></td>
+                <td><?= h((string) $linha['tc']); ?></td>
+                <td><?= h((string) $linha['nc']); ?></td>
+                <td><?= h((string) $linha['sb']); ?></td>
                 <td>
-                    <a class="btn btn-warning btn-sm" href="times.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                    <a class="btn btn-danger btn-sm" href="times.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+                    <a class="btn btn-warning btn-sm" href="times.php?acao=buscar&id=<?= (int) $linha['id']; ?>">Editar</a>
+                    <a class="btn btn-danger btn-sm" href="times.php?acao=excluir&id=<?= (int) $linha['id']; ?>">Excluir</a>
                 </td>
             </tr>
             <?php endforeach; ?>
