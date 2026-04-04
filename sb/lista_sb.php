@@ -1,6 +1,6 @@
 <div class="container print">
     <h2>Super Bowl</h2>
-    <p>Registre todos os dados do Super Bowl</p>
+    <p>Registre os dados históricos do Super Bowl.</p>
     <a class="btn btn-info" href="sb.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados</p>

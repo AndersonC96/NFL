@@ -1,6 +1,6 @@
 <div class="container print">
     <h2>Lesão</h2>
-    <p>Registre o tipo de lesão</p>
+    <p>Registre as lesões por jogador.</p>
     <a class="btn btn-info" href="injurie.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados</p>
@@ -10,6 +10,7 @@
             <th>Nome da Fratura</th>
             <th>Local de Fratura</th>
             <th>Jogador</th>
+            <th>Ações</th>
         </thead>
         <tbody>
             <?php foreach ($registros as $linha): ?>

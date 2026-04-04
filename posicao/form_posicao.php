@@ -1,27 +1,27 @@
 <?php
-    if(isset($registro)) $acao = "posicao.php?acao=atualizar&id=".$registro['id'];// se existir o registro
-    else $acao = "posicao.php?acao=gravar";// se não existir o registro
+if (isset($registro)) $acao = 'posicao.php?acao=atualizar&id=' . (int) $registro['id'];
+else $acao = 'posicao.php?acao=gravar';
 ?>
 <div class="container">
-    <form class="" action="<?php echo $acao; ?>" method="post">
-        <div class="from-group">
+    <form action="<?= $acao; ?>" method="post">
+        <div class="form-group">
             <label for="nome">Posição</label>
             <input id="nome" class="form-control" type="text" name="nome"
-                value="<?php if(isset($registro)) echo $registro['nome']; ?>" required>
+                value="<?= isset($registro) ? h((string) $registro['nome']) : ''; ?>" required>
         </div>
-        <div class="from-group">
+        <div class="form-group">
             <label for="id_classe">Classe</label>
             <select class="form-control" name="id_classe" required>
                 <option value="">Escolha um item da lista</option>
                 <?php foreach ($lista_classe as $item): ?>
-                <option value="<?php echo $item['id']; ?>"
-                    <?php if(isset($registro) && $registro['id_classe']==$item['id']) echo "selected";?>>
-                    <?php echo $item['nome']; ?>
+                <option value="<?= (int) $item['id']; ?>"
+                    <?php if(isset($registro) && $registro['id_classe']==$item['id']) echo 'selected';?>>
+                    <?= h((string) $item['nome']); ?>
                 </option>
                 <?php endforeach; ?>
             </select>
         </div>
         <br>
-        <button class="btn btn-info" type="submit">Enviar</button>
+        <button class="btn btn-info" type="submit">Salvar</button>
     </form>
 </div>

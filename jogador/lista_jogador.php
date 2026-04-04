@@ -1,6 +1,6 @@
 <div class="container print">
     <h2>Jogadores</h2>
-    <p>Registre os dados dos jogadores</p>
+    <p>Registre os dados principais dos jogadores.</p>
     <a class="btn btn-info" href="jogador.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados.</p>

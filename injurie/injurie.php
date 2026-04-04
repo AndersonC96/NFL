@@ -10,21 +10,17 @@ if ($acao === 'listar') {
     $sql = 'SELECT i.id, i.nome, i.local_fratura, j.nome as jogador FROM injurie i INNER JOIN jogador j ON j.id = i.id_jogador ORDER BY i.nome';
     $query = $con->query($sql);
     $registros = $query->fetchAll();
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/lista_injurie.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/lista_injurie.php', ['registros' => $registros]);
 } elseif ($acao === 'novo') {
     $lista_jogador = getJogadores($con);
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_injurie.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_injurie.php', ['lista_jogador' => $lista_jogador]);
 } elseif ($acao === 'gravar') {
     $nome = trim((string) post_value('nome'));
     $localFratura = trim((string) post_value('local_fratura'));
     $idJogador = filter_input(INPUT_POST, 'id_jogador', FILTER_VALIDATE_INT);
 
     if ($nome === '' || $localFratura === '' || !$idJogador) {
-        set_flash('danger', 'Preencha todos os campos obrigatorios da lesao.');
+        set_flash('danger', 'Preencha todos os campos obrigatórios da lesão.');
         redirect_to('injurie/injurie.php?acao=novo');
     }
 
@@ -32,27 +28,27 @@ if ($acao === 'listar') {
     $query = $con->prepare($sql);
     $result = $query->execute([':nome' => $nome, ':id_jogador' => (int) $idJogador, ':local_fratura' => $localFratura]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Lesao cadastrada com sucesso.' : 'Nao foi possivel cadastrar a lesao.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Lesão cadastrada com sucesso.' : 'Não foi possível cadastrar a lesão.');
     redirect_to('injurie/injurie.php');
 } elseif ($acao === 'excluir') {
     $id = get_id_param();
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para exclusao.');
+        set_flash('danger', 'Registro inválido para exclusão.');
         redirect_to('injurie/injurie.php');
     }
 
     $query = $con->prepare('DELETE FROM injurie WHERE id = :id');
     $result = $query->execute([':id' => $id]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Lesao removida com sucesso.' : 'Nao foi possivel remover a lesao.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Lesão removida com sucesso.' : 'Não foi possível remover a lesão.');
     redirect_to('injurie/injurie.php');
 } elseif ($acao === 'buscar') {
     $id = get_id_param();
     $lista_jogador = getJogadores($con);
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para edicao.');
+        set_flash('danger', 'Registro inválido para edição.');
         redirect_to('injurie/injurie.php');
     }
 
@@ -61,13 +57,11 @@ if ($acao === 'listar') {
     $registro = $query->fetch();
 
     if (!$registro) {
-        set_flash('danger', 'Lesao nao encontrada.');
+        set_flash('danger', 'Lesão não encontrada.');
         redirect_to('injurie/injurie.php');
     }
 
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_injurie.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_injurie.php', ['registro' => $registro, 'lista_jogador' => $lista_jogador]);
 } elseif ($acao === 'atualizar') {
     $id = get_id_param();
     $nome = trim((string) post_value('nome'));
@@ -75,7 +69,7 @@ if ($acao === 'listar') {
     $idJogador = filter_input(INPUT_POST, 'id_jogador', FILTER_VALIDATE_INT);
 
     if ($id === null || $nome === '' || $localFratura === '' || !$idJogador) {
-        set_flash('danger', 'Dados invalidos para atualizacao.');
+        set_flash('danger', 'Dados inválidos para atualização.');
         redirect_to('injurie/injurie.php');
     }
 
@@ -88,7 +82,7 @@ if ($acao === 'listar') {
         ':local_fratura' => $localFratura,
     ]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Lesao atualizada com sucesso.' : 'Nao foi possivel atualizar a lesao.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Lesão atualizada com sucesso.' : 'Não foi possível atualizar a lesão.');
     redirect_to('injurie/injurie.php');
 }
 

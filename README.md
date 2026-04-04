@@ -1,52 +1,49 @@
-# NFL CRUD Legado (PHP Manual)
+# NFL CRUD Legado (PHP Procedural)
 
-Projeto legado/manual em PHP procedural para administracao de dados tematicos da NFL.
+Projeto legado/manual em PHP procedural para administração de dados temáticos da NFL.
 
 ## Posicionamento do Projeto
 
-Este repositorio nao e uma aplicacao moderna nem um produto em evolucao com arquitetura por APIs.
+Este repositório **não** representa uma aplicação moderna em camadas, nem um produto em evolução com arquitetura complexa.
 
-Ele representa um sistema CRUD classico, com:
+A proposta é intencionalmente simples: demonstrar um sistema administrativo clássico em PHP puro, com autenticação, sessão e operações CRUD sobre entidades relacionadas.
 
-- autenticacao simples por login
-- sessao de usuario
-- conexao direta com MySQL via PDO
-- cadastro, listagem, edicao e exclusao de entidades
+## O que o Sistema Entrega
+
+- Login com autenticação simples.
+- Controle de sessão para áreas protegidas.
+- Conexão com MySQL/MariaDB usando PDO.
+- Cadastro, listagem, edição e exclusão de registros.
+- Relatório em CSV para extração de dados.
 
 Entidades principais:
 
-- classe
-- posicao
-- jogador
-- lesao (`injurie`)
-- time
-- super bowl (`sb`)
+- Classe
+- Posição
+- Jogador
+- Lesão (injurie)
+- Time
+- Super Bowl (sb)
 
 ## Stack
 
-- PHP (procedural)
+- PHP 7.4+ (estilo procedural)
 - MySQL/MariaDB
 - HTML + Bootstrap 4
 
-## Estrutura Basica
+## Estrutura Resumida
 
-- `login.php`: autenticacao e logout
-- `index.php`: pagina inicial autenticada
-- `config/conexao.php`: configuracao do banco via variaveis de ambiente
-- `config/bootstrap.php`: utilitarios de sessao, autenticacao e helpers
-- `template/`: cabecalho e rodape compartilhados
-- `*/<entidade>.php`: controladores CRUD por entidade
-- `nfl.sql`: script de criacao/base de dados
+- `login.php`: autenticação e logout
+- `index.php`: página inicial autenticada
+- `config/bootstrap.php`: helpers de sessão, autenticação, fluxo e escape
+- `config/conexao.php`: conexão PDO com fallback local
+- `template/`: cabeçalho e rodapé compartilhados
+- `*/<entidade>.php`: fluxo CRUD de cada entidade
+- `nfl.sql`: script base de estrutura e dados
 
-## Requisitos
+## Configuração
 
-- PHP 7.4+ (recomendado 8+)
-- MySQL ou MariaDB
-- Servidor local (XAMPP, Apache+PHP, etc.)
-
-## Configuracao
-
-O projeto permite configuracao por variaveis de ambiente:
+Você pode usar variáveis de ambiente para configurar o banco:
 
 - `DB_HOST`
 - `DB_PORT`
@@ -55,34 +52,43 @@ O projeto permite configuracao por variaveis de ambiente:
 - `DB_PASS`
 - `APP_BASE_URL` (opcional)
 
-Se nenhuma variavel for informada, o sistema usa fallback local (`127.0.0.1:3306`, banco `nfl`, usuario `root`, senha vazia).
+Se não definir variáveis, o sistema usa fallback local:
+
+- host `127.0.0.1`
+- porta `3306`
+- banco `nfl`
+- usuário `root`
+- senha vazia
+
+Arquivo de referência: `.env.example`.
 
 ## Banco de Dados
 
 1. Crie o banco `nfl` (ou ajuste `DB_NAME`).
 2. Importe o arquivo `nfl.sql`.
 
-Observacao sobre senha de usuario:
+### Observação sobre senha de usuário
 
-- o login atual usa `password_verify`;
-- se encontrar hash legado MD5, valida e atualiza automaticamente para `password_hash` no primeiro login bem-sucedido.
+- O login atual usa `password_verify`.
+- Se encontrar hash legado em MD5, o sistema valida no primeiro login e atualiza automaticamente para `password_hash`.
 
-## Execucao
+## Execução Local
 
-Com o servidor local configurado, acesse:
+Com Apache/PHP em execução (por exemplo, XAMPP), acesse:
 
 - `http://localhost/NFL/login.php`
 
 ## Escopo e Limites
 
-Este repositorio foi mantido com foco em:
+Este projeto foi refinado para melhor consistência técnica, organização e segurança básica dentro do contexto legado.
 
-- correcao tecnica basica
-- organizacao e higiene de codigo
-- seguranca essencial para contexto legado
+Não é objetivo deste repositório:
 
-Nao e objetivo deste projeto:
+- migrar para framework (Laravel, Symfony, etc.)
+- reescrever a arquitetura do zero
+- transformar o sistema em produto moderno
+- adicionar funcionalidades fora do escopo CRUD manual
 
-- migrar para framework moderno
-- reescrever arquitetura do zero
-- adicionar funcionalidades fora do CRUD administrativo manual
+## Público-Alvo do Repositório
+
+Este código é útil para estudo e portfólio em cenários de manutenção de sistemas legados em PHP procedural, com foco em fundamentos de backend e organização incremental de código.

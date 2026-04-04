@@ -10,19 +10,15 @@ if ($acao === 'listar') {
     $sql = 'SELECT id, nome, conferencia, divisao, cidade, estadio, capacidade, `head-coach`, td, tc, nc, sb FROM time ORDER BY nome';
     $query = $con->query($sql);
     $registros = $query->fetchAll();
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/lista_times.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/lista_times.php', ['registros' => $registros]);
 } elseif ($acao === 'novo') {
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_times.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_times.php');
 } elseif ($acao === 'gravar') {
     $nome = trim((string) post_value('nome'));
     $conferencia = trim((string) post_value('conferencia'));
 
     if ($nome === '' || $conferencia === '') {
-        set_flash('danger', 'Preencha os campos obrigatorios do time.');
+        set_flash('danger', 'Preencha os campos obrigatórios do time.');
         redirect_to('times/times.php?acao=novo');
     }
 
@@ -43,26 +39,26 @@ if ($acao === 'listar') {
         ':sb' => trim((string) post_value('sb')),
     ]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Time cadastrado com sucesso.' : 'Nao foi possivel cadastrar o time.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Time cadastrado com sucesso.' : 'Não foi possível cadastrar o time.');
     redirect_to('times/times.php');
 } elseif ($acao === 'excluir') {
     $id = get_id_param();
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para exclusao.');
+        set_flash('danger', 'Registro inválido para exclusão.');
         redirect_to('times/times.php');
     }
 
     $query = $con->prepare('DELETE FROM time WHERE id = :id');
     $result = $query->execute([':id' => $id]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Time removido com sucesso.' : 'Nao foi possivel remover o time.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Time removido com sucesso.' : 'Não foi possível remover o time.');
     redirect_to('times/times.php');
 } elseif ($acao === 'buscar') {
     $id = get_id_param();
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para edicao.');
+        set_flash('danger', 'Registro inválido para edição.');
         redirect_to('times/times.php');
     }
 
@@ -71,20 +67,18 @@ if ($acao === 'listar') {
     $registro = $query->fetch();
 
     if (!$registro) {
-        set_flash('danger', 'Time nao encontrado.');
+        set_flash('danger', 'Time não encontrado.');
         redirect_to('times/times.php');
     }
 
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_times.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_times.php', ['registro' => $registro]);
 } elseif ($acao === 'atualizar') {
     $id = get_id_param();
     $nome = trim((string) post_value('nome'));
     $conferencia = trim((string) post_value('conferencia'));
 
     if ($id === null || $nome === '' || $conferencia === '') {
-        set_flash('danger', 'Dados invalidos para atualizacao.');
+        set_flash('danger', 'Dados inválidos para atualização.');
         redirect_to('times/times.php');
     }
 
@@ -106,7 +100,7 @@ if ($acao === 'listar') {
         ':sb' => trim((string) post_value('sb')),
     ]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Time atualizado com sucesso.' : 'Nao foi possivel atualizar o time.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Time atualizado com sucesso.' : 'Não foi possível atualizar o time.');
     redirect_to('times/times.php');
 }
 ?>

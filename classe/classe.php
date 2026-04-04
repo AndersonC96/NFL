@@ -9,13 +9,9 @@ $acao = get_action(['listar', 'novo', 'gravar', 'excluir', 'buscar', 'atualizar'
 if ($acao === 'listar') {
     $query = $con->query('SELECT * FROM classe ORDER BY nome');
     $registros = $query->fetchAll();
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/lista_classe.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/lista_classe.php', ['registros' => $registros]);
 } elseif ($acao === 'novo') {
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_classe.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_classe.php');
 } elseif ($acao === 'gravar') {
     $nome = trim((string) post_value('nome'));
 
@@ -27,26 +23,26 @@ if ($acao === 'listar') {
     $query = $con->prepare('INSERT INTO classe(nome) VALUES(:nome)');
     $result = $query->execute([':nome' => $nome]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Classe cadastrada com sucesso.' : 'Nao foi possivel cadastrar a classe.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Classe cadastrada com sucesso.' : 'Não foi possível cadastrar a classe.');
     redirect_to('classe/classe.php');
 } elseif ($acao === 'excluir') {
     $id = get_id_param();
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para exclusao.');
+        set_flash('danger', 'Registro inválido para exclusão.');
         redirect_to('classe/classe.php');
     }
 
     $query = $con->prepare('DELETE FROM classe WHERE id = :id');
     $result = $query->execute([':id' => $id]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Classe removida com sucesso.' : 'Nao foi possivel remover a classe.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Classe removida com sucesso.' : 'Não foi possível remover a classe.');
     redirect_to('classe/classe.php');
 } elseif ($acao === 'buscar') {
     $id = get_id_param();
 
     if ($id === null) {
-        set_flash('danger', 'Registro invalido para edicao.');
+        set_flash('danger', 'Registro inválido para edição.');
         redirect_to('classe/classe.php');
     }
 
@@ -55,26 +51,24 @@ if ($acao === 'listar') {
     $registro = $query->fetch();
 
     if (!$registro) {
-        set_flash('danger', 'Classe nao encontrada.');
+        set_flash('danger', 'Classe não encontrada.');
         redirect_to('classe/classe.php');
     }
 
-    require_once __DIR__ . '/../template/cabecalho.php';
-    require_once __DIR__ . '/form_classe.php';
-    require_once __DIR__ . '/../template/rodape.php';
+    render_page(__DIR__ . '/form_classe.php', ['registro' => $registro]);
 } elseif ($acao === 'atualizar') {
     $id = get_id_param();
     $nome = trim((string) post_value('nome'));
 
     if ($id === null || $nome === '') {
-        set_flash('danger', 'Dados invalidos para atualizacao.');
+        set_flash('danger', 'Dados inválidos para atualização.');
         redirect_to('classe/classe.php');
     }
 
     $query = $con->prepare('UPDATE classe SET nome = :nome WHERE id = :id');
     $result = $query->execute([':id' => $id, ':nome' => $nome]);
 
-    set_flash($result ? 'success' : 'danger', $result ? 'Classe atualizada com sucesso.' : 'Nao foi possivel atualizar a classe.');
+    set_flash($result ? 'success' : 'danger', $result ? 'Classe atualizada com sucesso.' : 'Não foi possível atualizar a classe.');
     redirect_to('classe/classe.php');
 }
 ?>

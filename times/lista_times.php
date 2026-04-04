@@ -1,6 +1,6 @@
 <div class="container print">
     <h2>Times</h2>
-    <p>Registre todos os times da NFL</p>
+    <p>Registre os principais dados dos times da NFL.</p>
     <a class="btn btn-info" href="times.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados</p>
@@ -16,7 +16,7 @@
             <th>Head Coach</th>
             <th>Títulos de divisão</th>
             <th>Títulos de conferência</th>
-            <th>Títulos Pré-Super Bowl (NFL-AFC)</th>
+            <th>Títulos pré-Super Bowl (NFL/AFL)</th>
             <th>Super Bowl</th>
             <th>Ações</th>
         </thead>

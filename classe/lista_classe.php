@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Classe</h2>
-    <p>Registre a classe do jogador: Ataque, Defesa ou time de especialistas.</p>
+    <p>Registre a classe dos jogadores: ataque, defesa ou special team.</p>
     <a class="btn btn-info" href="classe.php?acao=novo">Novo</a>
     <?php if (count($registros)==0): ?>
     <p>Sem registros encontrados</p>

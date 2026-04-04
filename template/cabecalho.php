@@ -15,7 +15,7 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="<?= BASE_URL; ?>index.php">NFL</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegacao">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Alternar navegação">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -23,13 +23,13 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>classe/classe.php">Classe</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>posicao/posicao.php">Posicoes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>posicao/posicao.php">Posições</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>jogador/jogador.php">Jogadores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>injurie/injurie.php">Lesoes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>injurie/injurie.php">Lesões</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>times/times.php">Times</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>sb/sb.php">Super Bowl</a></li>
-                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>relatorio/relatorio_page.php">Relatorios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.nfl.com/standings/league/2021/REG" target="_blank" rel="noopener">Classificacao</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= BASE_URL; ?>relatorio/relatorio_page.php">Relatórios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.nfl.com/standings/league/2021/REG" target="_blank" rel="noopener">Classificação</a></li>
                 </ul>
 
                 <?php if (!empty($_SESSION['logado'])): ?>

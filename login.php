@@ -6,7 +6,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'sair') {
     $_SESSION = [];
     session_destroy();
     session_start();
-    set_flash('success', 'Sessao encerrada com sucesso.');
+    set_flash('success', 'Sessão encerrada com sucesso.');
     redirect_to('login.php');
 }
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = (string) post_value('senha');
 
     if (!$email || $senha === '') {
-        $msg = 'Informe e-mail e senha validos.';
+        $msg = 'Informe e-mail e senha válidos.';
     } else {
         $sql = 'SELECT id, nome, email, senha FROM usuario WHERE email = :email LIMIT 1';
         $query = $con->prepare($sql);

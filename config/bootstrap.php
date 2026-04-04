@@ -61,6 +61,12 @@ function post_value(string $key, $default = '')
     return $value !== null ? $value : $default;
 }
 
+function post_int(string $key): ?int
+{
+    $value = filter_input(INPUT_POST, $key, FILTER_VALIDATE_INT);
+    return ($value !== false && $value !== null) ? (int) $value : null;
+}
+
 function set_flash(string $type, string $message): void
 {
     $_SESSION['flash'] = ['type' => $type, 'message' => $message];
@@ -80,4 +86,12 @@ function get_flash(): ?array
 function h(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+}
+
+function render_page(string $viewFile, array $vars = []): void
+{
+    extract($vars, EXTR_SKIP);
+    require __DIR__ . '/../template/cabecalho.php';
+    require $viewFile;
+    require __DIR__ . '/../template/rodape.php';
 }
